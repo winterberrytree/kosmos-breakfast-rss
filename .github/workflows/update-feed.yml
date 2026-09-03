@@ -3,7 +3,7 @@ name: Update and publish RSS
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 8 * * 1-5"
+    - cron: "0 10 * * 1-5"
 
 permissions:
   contents: read

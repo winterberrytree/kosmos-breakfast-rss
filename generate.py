@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 SHOW_NAME = "Breakfast στον Κόσμο"
 AUTHOR = "Προκόπης Δούκας"
 SHOW_URL = "https://www.ertecho.gr/radio/kosmos/show/breakfast-ston-kosmo/"
+ARTWORK_URL = "https://www.ertecho.gr/wp-content/uploads/2025/01/doukas_2025generic.png"
 DESCRIPTION = (
     "Ιδιωτικό RSS feed για την εκπομπή «Breakfast στον Κόσμο» του Προκόπη Δούκα "
     "στο KOSMOS / ΕΡΤ. Τα αρχεία ήχου μεταδίδονται απευθείας από τους servers της ΕΡΤ."
@@ -167,6 +168,13 @@ def build_feed(episodes):
     ET.SubElement(channel, f"{{{ITUNES}}}author").text = AUTHOR
     ET.SubElement(channel, f"{{{ITUNES}}}explicit").text = "false"
     ET.SubElement(channel, f"{{{ITUNES}}}type").text = "episodic"
+    ET.SubElement(channel, f"{{{ITUNES}}}image", {"href": ARTWORK_URL})
+
+    image = ET.SubElement(channel, "image")
+    ET.SubElement(image, "url").text = ARTWORK_URL
+    ET.SubElement(image, "title").text = SHOW_NAME
+    ET.SubElement(image, "link").text = SHOW_URL
+
     ET.SubElement(channel, f"{{{ATOM}}}link", {
         "href": feed_url(),
         "rel": "self",

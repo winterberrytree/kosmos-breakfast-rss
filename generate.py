@@ -156,8 +156,6 @@ def feed_url():
 def build_feed(episodes):
     rss = ET.Element("rss", {
         "version": "2.0",
-        f"xmlns:itunes": ITUNES,
-        f"xmlns:atom": ATOM,
     })
     channel = ET.SubElement(rss, "channel")
 
